@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultrap.net.nz/thymeleaf/layout"
+	  layout:decorator="/admin/admin-layout">
+<head>
+<title>User Create Update</title>
+</head>
+<body class="infobar-offcanvas">
+<div layout:fragment="content">
+
+<div class="container-fluid">
+                 
+<div>
+	<h3 th:text="#{create_update_user}"​>User create update</h3>
+</div>               
+<div class="row">
+    <div class="col-xs-12">
+	    
+
+        <div class="panel panel-midnightblue">
+            <div class="panel-heading"><h2 th:text="#{form_create_user}">Form Create User</h2></div>
+            <div class="panel-body">
+
+                <form class="form-horizontal row-border" id="validate-form" data-parsley-validate="" novalidate="">
+                    <div class="form-group">
+                        <label th:text="#{userID}" class="col-sm-3 control-label">User ID</label>
+                        <div class="col-sm-6">
+                            <input type="text"  required="" class="form-control" data-parsley-id="2887"><span class="help-block" id="parsley-id-2887"></span>
+                        </div>
+                    </div>
+					<div class="form-group">
+					    <label th:text="#{userName}" class="col-sm-3 control-label">User Name</label>
+					    <div class="col-sm-6">
+					        <input type="text" data-parsley-minlength="6" required="" class="form-control" data-parsley-id="5984"><span class="help-block" id="parsley-id-5984"></span>
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label th:text="#{gender}" class="col-sm-3 control-label">Gender</label>
+					    <div class="col-sm-6">
+					        <select style="width:100px;height:30px;">
+					        	<option​ th:text="#{boy}">Male</option>
+					        	<option th:text="#{girl}">Female</option>
+					        </select>
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label th:text="#{phone}" class="col-sm-3 control-label">Phone</label>
+					    <div class="col-sm-6">
+					        <input type="text" data-parsley-range="[5,10]"  required="" class="form-control" data-parsley-id="3578"><span class="help-block" id="parsley-id-3578"></span>
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label th:text="#{email}" class="col-sm-3 control-label">Email</label>
+					    <div class="col-sm-6">
+					        <input type="text" data-parsley-pattern="#[A-Fa-f0-9]{6}"  required="" class="form-control" data-parsley-id="9660"><span class="help-block" id="parsley-id-9660"></span>
+					    </div>
+					</div>
+
+					<div class="form-group">
+					    <label th:text="#{DOB}" class="col-sm-3 control-label">Date of Birth</label>
+					    <div class="col-sm-6">
+					        <input type="text" data-parsley-type="email" required="" class="form-control" data-parsley-id="6433"><span class="help-block" id="parsley-id-6433"></span>
+					    </div>
+					</div>
+					
+					<div class="form-group">
+					    <label th:text="#{password}" class="col-sm-3 control-label">Password</label>
+					    <div class="col-sm-6">
+					        <input type="text" id="ps1" required="" class="form-control" data-parsley-id="5199"><span class="help-block" id="parsley-id-5199"></span>
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label th:text="#{confirm_password}" class="col-sm-3 control-label">Repeat Password</label>
+					    <div class="col-sm-6">
+					        <input type="text" data-parsley-equalto="#ps1" required="" class="form-control" data-parsley-id="8686"><span class="help-block" id="parsley-id-8686"></span>
+					    </div>
+					</div>
+					<div class="form-group">
+					    
+					    <div class="col-sm-6">
+					        <div class="checkbox" >
+					        <div style="padding-left:300px">
+					          <input type="checkbox" required="" name="terms" data-parsley-multiple="terms" data-parsley-id="2693">
+					          <label th:text="#{condition}">
+					             Accept Terms &amp; Conditions
+					          </label><span class="help-block" id="parsley-id-multiple-terms"></span>
+					          </div>
+					      </div>
+					  </div>
+					</div>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <div class="btn-toolbar">
+                                	<span th:text="#{create_user}" class="btn btn-default">Create User</span>
+                                    <button th:text="#{cancel}" class="btn btn-default">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>                  
+</div>
+</body>
+</html>

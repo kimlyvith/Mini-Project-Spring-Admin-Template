@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:layout="http://www.utraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="ISO-8859-1"/>
+<title layout:title-pattern="$CONTENT_TITLE - $DECORATOR_TITLE">Admin Template</title>
+</head>
+<body>
+	<div th:replace="shared/_header"></div>
+	
+	<div th:replace="shared/_menu"></div>
+	
+	<div layout:fragment="content"></div>
+	
+	<div th:replace="shared/_footer"></div>
+	
+	<div th:replace="shared/_script"></div>
+</body>
+</html>

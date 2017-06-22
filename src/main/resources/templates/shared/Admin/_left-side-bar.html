@@ -1,0 +1,42 @@
+
+<div class="static-sidebar-wrapper sidebar-midnightblue">
+  <div class="static-sidebar" style="top: 50px;">
+      <div class="sidebar">
+	    <div class="widget stay-on-collapse" id="widget-welcomebox">
+	        <div class="widget-body welcome-box tabular">
+	            <div class="tabular-row">
+	                <div class="tabular-cell welcome-avatar">
+	                    <a href="#"><img src="http://placehold.it/300&amp;text=Placeholder" class="avatar"></a>
+	                </div>
+	                <div class="tabular-cell welcome-options">
+	                    <span class="welcome-text">Welcome,</span>
+	                    <a href="#" class="name">Steve Ly</a>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+		<div class="widget stay-on-collapse" id="widget-sidebar">
+	        <nav role="navigation" class="widget-body">
+		<ul class="acc-menu">
+			<li class="nav-separator">Menu</li>
+			<li class="active">
+				<a th:href="@{/user/dashboard}" th:text="#{dashboard}">Dashboard</a>
+			</li>
+			<li class="hasChild open">
+				<a th:href="@{/user/user-list}" th:text="#{user_list}">User List</a>
+			</li>
+			<li class="hasChild">
+				<a th:href="@{/user/user-cu}" th:text="#{user_create_update}">User create update</a>
+			</li>
+			<li class="hasChild">
+				<a th:href="@{/user/role-list}" th:text="#{role_list}">Role List</a>
+	        </li>
+	        <li class="hasChild">
+	        	<a th:href="@{/user/role-cu}" th:text="#{role_create_update}">Role Create Update</a>
+	        </li>
+		</ul>
+		</nav>
+	    </div>
+	</div>
+   </div>
+</div>
