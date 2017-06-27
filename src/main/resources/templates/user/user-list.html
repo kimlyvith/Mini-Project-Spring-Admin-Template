@@ -18,74 +18,54 @@
 			<div class="panel-heading">
 				<h2 th:text="#{all_user}">All User</h2>
 				<div class="panel-ctrls">
-				<div id="example_filter" class="dataTables_filter pull-right"><label class="panel-ctrls-center"><input type="search" class="form-control" placeholder="Search..." aria-controls="example"></label></div><i class="separator"></i><div class="dataTables_length pull-left" id="example_length"><label class="panel-ctrls-center"><select name="example_length" aria-controls="example" class="form-control"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></label></div></div>
+				<div id="example_filter" class="dataTables_filter pull-right">
+				<label class="panel-ctrls-center">
+				<input type="search" class="form-control" placeholder="Search..." aria-controls="example">
+				</label></div><i class="separator"></i><div class="dataTables_length pull-left" id="example_length">
+				<label class="panel-ctrls-center"></label></div></div>
 			</div>
 			<div class="panel-body panel-no-padding">
-				<div id="example_wrapper" class="dataTables_wrapper form-inline no-footer"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><table id="example" class="table table-striped table-bordered dataTable no-footer" cellspacing="0" width="100%" role="grid" aria-describedby="example_info" style="width: 100%;">
-					<thead>
-						<tr role="row">
-						<th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column ascending" style="width: 79px;" th:text="#{userID}">User ID</th>
-						<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 87px;" th:text="#{userName}">User Name</th>
-						<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 106px;" th:text="#{gender}">Gender</th>
-						<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 65px;" th:text="#{phone}">Phone</th>
-						<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 43px;" th:text="#{email}">Email</th></tr>
-					</thead>
-					<tbody>
-						<tr class="gradeA odd" role="row">
-							<td class="sorting_1">1</td>
-							<td>Vith Kimly</td>
-							<td>M</td>
-							<td class="center">093 550164</td>
-							<td class="center">kimlyvithkimly@gmail.com</td>
-						</tr>
-						<tr class="gradeA even" role="row">
-							<td class="sorting_1">2</td>
-							<td>Keo Ratha</td>
-							<td>M</td>
-							<td class="center">093 64569897</td>
-							<td class="center">ratha@gmail.com</td>
-						</tr>
-						<tr class="gradeA even" role="row">
-							<td class="sorting_1">3</td>
-							<td>Thavid</td>
-							<td>M</td>
-							<td class="center">093 8393332</td>
-							<td class="center">thavid@gmail.com</td>
-						</tr>
-						<tr class="gradeA even" role="row">
-							<td class="sorting_1">4</td>
-							<td>Many</td>
-							<td>M</td>
-							<td class="center">093 4354535</td>
-							<td class="center">many@gmail.com</td>
-						</tr>
-						<tr class="gradeA even" role="row">
-							<td class="sorting_1">5</td>
-							<td>bunthai</td>
-							<td>M</td>
-							<td class="center">093 9765764</td>
-							<td class="center">bunthai@gmail.com</td>
-						</tr>
-						<tr class="gradeA even" role="row">
-							<td class="sorting_1">6</td>
-							<td>neka</td>
-							<td>M</td>
-							<td class="center">093 13232323</td>
-							<td class="center">neka@gmail.com</td>
-						</tr>
-					</tbody>
-				</table></div>
-				<div class="panel-footer"><div class="row"><div class="col-sm-6"><div class="dataTables_info" id="example_info" role="status" aria-live="polite">Showing 1 of 10 </div></div><div class="col-sm-6">
-				<div class="dataTables_paginate paging_bootstrap" id="example_paginate"><ul class="pagination pull-right m0"><li class="previous disabled">
-				<a href="#" th:text="#{previous}">Previous</a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li>
-				<li class="next"><a href="#" th:text="#{next}">Next</a>
-				</li></ul>
-				</div></div></div></div>
+					
+					<table class="table table-bordered">
+					    <thead>
+					      <tr>
+					        <th th:text="#{userID}">User ID</th>
+					        <th th:text="#{userName}">User Name</th>
+					        <th th:text="#{email}">Email</th>
+					        <th th:text="#{gender}">Gender</th>
+					        <th th:text="#{phone}">Phone</th>
+					        <th th:text="#{status}">Status</th>
+					        <th th:text="#{action}">Action</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <tr th:each="user:${USER}">
+						        <td th:text="${user.id}">1</td>
+						        <td th:text="${user.username}">kimly</td>
+						        <td th:text="${user.email}">john@example.com</td>
+						        <td th:text="${user.gender}">M</td>
+						        <td th:text="${user.phonenumber}">093 550164</td>
+						        <td th:text="${user.status}">single</td>
+						        <td>
+						        		<a class="btn btn-danger" th:href="@{/remove-user/{user_hash}(user_hash=${user.user_hash})}">
+						        			Delete
+						        		</a>
+						        	<button class="btn btn-primary">Update</button>
+						        	<a class="btn btn-default" th:href="@{/user-detail/{userhash}(userhash=${user.user_hash})}">
+						        		Detail
+						        	</a>
+						        	
+						        </td>
+					      </tr>
+					      
+					    </tbody>
+					  </table>
+					  
+					  
 					</div>
+					
 				</div>
-			</div>
-		</div>
-
+				
      </div> <!-- .container-fluid -->
  </div> <!-- #page-content -->
 </div>

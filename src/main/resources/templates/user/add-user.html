@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultrap.net.nz/thymeleaf/layout"
+	  layout:decorator="/admin/admin-layout">
+<head>
+<title>Add User</title>
+</head>
+<body class="infobar-offcanvas">
+<div layout:fragment="content">
+
+<div class="container-fluid">
+                 
+<div>
+	<h3 th:text="#{add_user}"​>Add User</h3>
+</div>               
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-midnightblue">
+            <div class="panel-heading"><h2 th:text="#{add}">Add</h2></div>
+            <div class="panel-body">
+
+                <form class="form-horizontal row-border" th:object="${USER}" th:method="POST" th:action="@{/mysave}" id="validate-form" data-parsley-validate="">
+                    
+					<div class="form-group">
+					    <label th:text="#{userName}" class="col-sm-3 control-label">User Name</label>
+					    <div class="col-sm-6">
+					        <input type="text" th:field="*{username}" data-parsley-minlength="6" required="" class="form-control" data-parsley-id="5984">
+					        <span class="help-block" id="parsley-id-5984"></span>
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label th:text="#{gender}" class="col-sm-3 control-label">Gender</label>
+					    <div class="col-sm-6">
+					        <select style="width:100px;height:30px;" th:field="*{gender}">
+					        	<option​ th:text="#{boy}" value="M">Male</option>
+					        	<option th:text="#{girl}" value="F">Female</option>
+					        </select>
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label th:text="#{phone}"  class="col-sm-3 control-label">Phone</label>
+					    <div class="col-sm-6">
+					        <input th:field="*{phonenumber}" type="text" data-parsley-range="[5,10]"  required="" class="form-control" data-parsley-id="3578"><span class="help-block" id="parsley-id-3578"></span>
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label th:text="#{email}" class="col-sm-3 control-label">Email</label>
+					    <div class="col-sm-6">
+					        <input type="text" th:field="*{email}" data-parsley-pattern="#[A-Fa-f0-9]{6}"  required="" class="form-control" data-parsley-id="9660"><span class="help-block" id="parsley-id-9660"></span>
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label th:text="#{Status}" class="col-sm-3 control-label">Status</label>
+					    <div class="col-sm-6">
+					        <input type="text" th:field="*{status}" data-parsley-pattern="#[A-Fa-f0-9]{6}"  required="" class="form-control" data-parsley-id="9660">
+					        <span class="help-block" id="parsley-id-9660"></span>
+					    </div>
+					</div>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <div class="btn-toolbar">
+                                	<button type="submit" class="btn btn-primary col-sm-6">Save User</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>                  
+</div>
+</body>
+</html>

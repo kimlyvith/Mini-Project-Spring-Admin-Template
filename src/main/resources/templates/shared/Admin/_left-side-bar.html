@@ -22,18 +22,37 @@
 			<li class="active">
 				<a th:href="@{/user/dashboard}" th:text="#{dashboard}">Dashboard</a>
 			</li>
-			<li class="hasChild open">
-				<a th:href="@{/user/user-list}" th:text="#{user_list}">User List</a>
+			<li>
+				<a href="#"​ th:text="#{user}">User</a>
+				<ul class="acc-menu">
+					<li class="hasChild open">
+						<a th:href="@{/user/user-list}" th:text="#{list_user}">List User</a>
+					</li>
+					<li class="hasChild">
+						<a th:href="@{/user/add-user}" th:text="#{add_user}">Add User</a>
+					</li>
+					<li class="hasChild">
+						<a th:href="@{/user/update-user}" th:text="#{update_user}">Update User</a>
+					</li>
+				</ul>
 			</li>
-			<li class="hasChild">
-				<a th:href="@{/user/user-cu}" th:text="#{user_create_update}">User create update</a>
+			<li>
+				<a href="#" th:text="#{role}">Role</a>
+				<ul class="acc-menu">
+					<li class="hasChild">
+						<a th:href="@{/user/role-list}" th:text="#{list_role}">List Role</a>
+			        </li>
+			         <li class="hasChild">
+			        	<a th:href="@{/user/role-cu}" th:text="#{add_role}">Add Role</a>
+			        </li>
+			        <li class="hasChild">
+			        	<a th:href="@{/user/role-cu}" th:text="#{update_role}">Update Role</a>
+			        </li>
+				</ul>
 			</li>
-			<li class="hasChild">
-				<a th:href="@{/user/role-list}" th:text="#{role_list}">Role List</a>
-	        </li>
-	        <li class="hasChild">
-	        	<a th:href="@{/user/role-cu}" th:text="#{role_create_update}">Role Create Update</a>
-	        </li>
+			
+			
+	       
 		</ul>
 		</nav>
 	    </div>
