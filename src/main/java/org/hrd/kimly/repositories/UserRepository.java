@@ -25,6 +25,8 @@ public interface UserRepository {
 			+ " from users")
 	public List<User> getUser(); 
 	
+	
+	
 	/**
 	 * Save user to database
 	 * @param user
@@ -36,14 +38,15 @@ public interface UserRepository {
 			+ "	email, "
 			+ " phonenumber,"
 			+ " status,"
-			+ " user_hash"
+			+ " user_hash,"
+			+ " created_date"
 			+ "	) VALUES ("
 			+ "	#{user.username},"
 			+ "	#{user.gender},"
 			+ "	#{user.email},"
 			+ "	#{user.phonenumber},"
 			+ "	#{user.status},"
-			+ "	#{user.user_hash})")
+			+ "	#{user.user_hash}, #{user.created_date})")
 	@SelectKey(
 			statement="SELECT last_value FROM users_id_seq",
 			keyProperty="user.id", keyColumn="last_value",
@@ -55,16 +58,24 @@ public interface UserRepository {
 	@Delete("DELETE FROM users WHERE user_hash=#{user_hash}")
 	public boolean delete(@Param("user_hash") String userHash);
 	
+	@Update("UPDATE users SET"
+			+ " username=#{user.username},"
+			+ " email=#{user.email},"
+			+ " gender=#{user.gender},"
+			+ " phonenumber=#{user.phonenumber},"
+			+ " status=#{user.status}"
+			+ " WHERE user_hash=#{user.user_hash}")
+	public boolean updateUser(@Param("user") User user);
 	
-	
-	
-	@Update("UPDATE users SET "
-			+ "username=#{user.username},"
-			+ "email=#{user.email},"
-			+ "password=#{user.password},"
-			+ "gender=#{user.gender}"
-			+ " WHERE user_hash=#{user.userHash}")
-	public boolean update(@Param("user") User user);
+	@Select("SELECT "
+			+ " username,"
+			+ " email,"
+			+ " gender,"
+			+ " phonenumber,"
+			+ " status"
+			+ " FROM users"
+			+ " WHERE user_hash=#{user_hash}")
+	public User getUser1(String user_hash);
 	
 	@Insert("<script>"
 			+ "	INSERT INTO users ("

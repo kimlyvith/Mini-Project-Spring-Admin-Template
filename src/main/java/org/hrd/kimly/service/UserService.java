@@ -10,7 +10,9 @@ public interface UserService {
 	public boolean save(User user);
 	public boolean deleteByUserHash(String userHash);
 	public User selectByUserHash(String userHash);
+	public boolean updateUser(User user);
+	public User getUser(String user_hash);
+	public User getUser1(String user_hash);
 	public boolean updateByUserHash(User user);
-	public boolean saveBatch(List<User> users);
 	
 }

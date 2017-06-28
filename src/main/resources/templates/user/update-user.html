@@ -3,7 +3,7 @@
 	  xmlns:layout="http://www.ultrap.net.nz/thymeleaf/layout"
 	  layout:decorator="/admin/admin-layout">
 <head>
-<title>User Create Update</title>
+<title th:text="#{update_user}">User Update</title>
 </head>
 <body class="infobar-offcanvas">
 <div layout:fragment="content">
@@ -11,57 +11,57 @@
 <div class="container-fluid">
                  
 <div>
-	<h3>Update User</h3>
+	<h3 th:text="#{update_user}">Update User</h3>
 </div>               
 <div class="row">
     <div class="col-xs-12">
 	    
 
         <div class="panel panel-midnightblue">
-            <div class="panel-heading"><h2>Update</h2></div>
+            <div class="panel-heading"><h2 th:text="#{update}">Update</h2></div>
             <div class="panel-body">
 
-                <form class="form-horizontal row-border" id="validate-form" data-parsley-validate="" novalidate="">
+                <form class="form-horizontal" th:action="@{/update}" th:object="${USER}" th:method="POST" row-border="" id="validate-form" data-parsley-validate="" novalidate="">
                     <div class="form-group">
                         <label class="col-sm-3 control-label">User Hash</label>
                         <div class="col-sm-6">
-                            <input type="text"  required="" class="form-control" data-parsley-id="2887"><span class="help-block" id="parsley-id-2887"></span>
+                            <h6 th:text="${user_hash}" ></h6>
                         </div>
                     </div>
 					<div class="form-group">
 					    <label th:text="#{userName}" class="col-sm-3 control-label">User Name</label>
 					    <div class="col-sm-6">
-					        <input type="text" data-parsley-minlength="6" required="" class="form-control" data-parsley-id="5984"><span class="help-block" id="parsley-id-5984"></span>
+					        <input th:field="*{username}" th:value="${USERNAME}" type="text" data-parsley-minlength="6" required="" class="form-control" data-parsley-id="5984"><span class="help-block" id="parsley-id-5984"></span>
 					    </div>
 					</div>
 					<div class="form-group">
 					    <label th:text="#{gender}" class="col-sm-3 control-label">Gender</label>
 					    <div class="col-sm-6">
-					        <select style="width:100px;height:30px;">
-					        	<option th:text="#{boy}">Male</option>
-					        	<option th:text="#{girl}">Female</option>
+					        <select style="width:100px;height:30px;" th:field="*{gender}" >
+					        	<option th:value="M" th:text="#{boy}">Male</option>
+					        	<option th:value="F" th:text="#{girl}">Female</option>
 					        </select>
 					    </div>
 					</div>
 					<div class="form-group">
 					    <label th:text="#{phone}" class="col-sm-3 control-label">Phone</label>
 					    <div class="col-sm-6">
-					        <input type="text" data-parsley-range="[5,10]"  required="" class="form-control" data-parsley-id="3578"><span class="help-block" id="parsley-id-3578"></span>
+					        <input th:field="*{phonenumber}" th:value="${PHONE}" type="text" data-parsley-range="[5,10]"  required="" class="form-control" data-parsley-id="3578"><span class="help-block" id="parsley-id-3578"></span>
 					    </div>
 					</div>
 					<div class="form-group">
-					    <label th:text="#{email}" class="col-sm-3 control-label">Email</label>
+					    <label th:text="#{email}"  class="col-sm-3 control-label">Email</label>
 					    <div class="col-sm-6">
-					        <input type="text" data-parsley-pattern="#[A-Fa-f0-9]{6}"  required="" class="form-control" data-parsley-id="9660"><span class="help-block" id="parsley-id-9660"></span>
+					        <input th:field="*{email}" th:value="${EMAIL}" type="text" data-parsley-pattern="#[A-Fa-f0-9]{6}"  required="" class="form-control" data-parsley-id="9660"><span class="help-block" id="parsley-id-9660"></span>
 					    </div>
 					</div>
                     <div class="panel-footer">
                         <div class="row">
                             <div class="col-sm-6 col-sm-offset-3">
                                 <div class="btn-toolbar">
-                                	<button class="btn btn-default col-sm-6">Update Save</button>
-                                    
-                                </div>
+                                	
+              						<input class="btn btn-primary col-md-6" type="submit" value="Update">
+              						</div>
                             </div>
                         </div>
                     </div>

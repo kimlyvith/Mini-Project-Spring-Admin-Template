@@ -41,7 +41,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 		
 		registry.addViewController("/user/role-list").setViewName("/user/role-list");
 		registry.addViewController("/user/role-cu").setViewName("/user/role-cu");
-		registry.addViewController("/user/dashboard").setViewName("/user/dashboard");
+//		registry.addViewController("/user/dashboard").setViewName("/user/dashboard");
 		
 		//back end
 		

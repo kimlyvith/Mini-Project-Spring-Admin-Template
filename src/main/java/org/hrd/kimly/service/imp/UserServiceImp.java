@@ -54,7 +54,7 @@ public class UserServiceImp implements UserService{
 	@Override
 	public boolean updateByUserHash(User user) {
 		// TODO: update user from database by userHash
-		boolean status = userRepository.update(user);
+		boolean status = userRepository.updateUser(user);
 		if (status) {
 			System.out.println("User has been updated!");
 		} else {
@@ -63,12 +63,7 @@ public class UserServiceImp implements UserService{
 		return status;
 	}
 
-	@Override
-	public boolean saveBatch(List<User> users) {
-		return userRepository.saveBatch(users);
-	}
 
-	@Override
 	public User selectByUserHash(String userHash) {
 		
 		ArrayList<User> users = (ArrayList<User>)getUser();
@@ -80,5 +75,23 @@ public class UserServiceImp implements UserService{
 		
 		return null;
 	}
+
+	@Override
+	public boolean updateUser(User user) {
+		
+		return userRepository.updateUser(user);
+	}
+	
+	@Override
+	public User getUser1(String user_hash) {
+		return userRepository.getUser1(user_hash);
+	}
+
+	@Override
+	public User getUser(String user_hash) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

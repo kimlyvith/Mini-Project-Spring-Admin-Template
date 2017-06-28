@@ -47,10 +47,12 @@
 						        <td th:text="${user.phonenumber}">093 550164</td>
 						        <td th:text="${user.status}">single</td>
 						        <td>
-						        		<a class="btn btn-danger" th:href="@{/remove-user/{user_hash}(user_hash=${user.user_hash})}">
-						        			Delete
-						        		</a>
-						        	<button class="btn btn-primary">Update</button>
+					        		<a class="btn btn-danger" th:href="@{/remove-user/{user_hash}(user_hash=${user.user_hash})}">
+					        			Delete
+					        		</a>
+						        	<a class="btn btn-primary" th:href="@{/update/{user_hash}(user_hash=${user.user_hash})}">
+						        		Update
+						        	</a>
 						        	<a class="btn btn-default" th:href="@{/user-detail/{userhash}(userhash=${user.user_hash})}">
 						        		Detail
 						        	</a>

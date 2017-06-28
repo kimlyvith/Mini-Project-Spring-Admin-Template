@@ -1,6 +1,9 @@
 package org.hrd.kimly.controller;
 
+import java.sql.Timestamp;
+
 import org.hrd.kimly.model.User;
+
 import org.hrd.kimly.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,11 +12,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import  org.springframework.ui.ModelMap;
 
 
 
 @Controller
 public class MyController {
+	private String userHash;
+	
 	@Autowired
 	private UserService userService;
 
@@ -31,11 +37,8 @@ public class MyController {
 	
 	@RequestMapping(value="/mysave",method=RequestMethod.POST)
 	public String addUser1(@ModelAttribute User user,Model map){
-		
-//		String uuid = UUID.randomUUID().toString();
-//		
-//		user.setUser_hash(uuid);
-		
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		user.setCreated_date(timestamp);
 		System.out.println(user.getUsername());
 		userService.save(user);
 		return "redirect:/user/user-list";
@@ -56,15 +59,27 @@ public class MyController {
 	}
 	
 	
-//	
-//	@RequestMapping("/user-list")
-//	public String test(Model m){
-//		m.addAttribute("TEST","Hello");
-//		return "user-list";
-//	}
-//	@RequestMapping("/user")
-//	public String userPage(){
-//		return "user";
-//	}
+	@RequestMapping("/update/{user_hash}")
+	public String updateUser(@PathVariable("user_hash") String user_hash,ModelMap model) {
+		userHash = user_hash;
+		model.addAttribute("USER", userService.getUser1(user_hash));
+		model.addAttribute("user_hash",user_hash);
+		return "user/update-user";
+	}
+	
+	
+	@RequestMapping("/update")
+	public String update(User user) {
+		user.setUser_hash(userHash);
+		userService.updateByUserHash(user);
+				
+		return "redirect:user/user-list";
+	}
+	
+	@RequestMapping("/user/dashboard")
+	public String indexPage(ModelMap model) {
+		model.addAttribute("NUMOFUSER", userService.getUser().size());
+		return "/user/dashboard";
+	}
 	
 }

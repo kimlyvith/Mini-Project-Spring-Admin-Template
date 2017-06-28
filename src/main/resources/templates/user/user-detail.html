@@ -3,20 +3,20 @@
 	  xmlns:layout="http://www.ultrap.net.nz/thymeleaf/layout"
 	  layout:decorator="/admin/admin-layout">
 <head>
-<title th:text="#{user_list}">User Detail</title>
+<title th:text="#{user_detail}">User Detail</title>
 </head>
 <body class="infobar-offcanvas">
 
 <div layout:fragment="content">
     
 <div>
-	<h3 style="padding-left:30px;" th:text="#{user_list}">User Detail</h3>
+	<h3 style="padding-left:30px;" th:text="#{user_detail}">User Detail</h3>
 </div>
 <div class="row">
 	<div class="col-md-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h2 th:text="#{all_user}">All User</h2>
+				<h2 th:text="#{user}">User</h2>
 				<div class="panel-ctrls">
 				<div id="example_filter" class="dataTables_filter pull-right">
 				<label class="panel-ctrls-center">
@@ -26,7 +26,8 @@
 			</div>
 			<div class="panel-body panel-no-padding">
 					
-				<ul>
+				<hr/>
+				<ul style="line-height:20px;">
 					<li th:inline="text">Name: [[${UDETAIL.username}]]</li>
 					<li th:inline="text">Gender: [[${UDETAIL.gender}]]</li>
 					<li th:inline="text">Phone: [[${UDETAIL.phonenumber}]]</li>

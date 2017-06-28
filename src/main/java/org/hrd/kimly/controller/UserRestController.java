@@ -39,58 +39,11 @@ public class UserRestController {
 		return userService.getUser();
 	}
 	
-	
-	/**
-	 * 
-	 * @return
-	 */
-	/*@RequestMapping("/save")
-	public boolean save(){
-		return userService.save(new User(6, "dara", "dararith@gmail.com", "M","0987336363","0"));
-	}*/
-//	private String userHash;
-	
 	@RequestMapping("/add-user")
 	public String addUser(User user, ModelMap map){
 		map.addAttribute("KEY",userService.getUser());
 		map.addAttribute("USER", new User());
 		return "/user/add-user";
 	}
-
-
 	
-	
-	/**
-	 * 
-	 * @param userHash
-	 * @return
-	 */
-	@RequestMapping("/delete/{user_hash}")
-	public boolean delete(@PathVariable("user_hash") String userHash){
-		return userService.deleteByUserHash(userHash);
-	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-	@RequestMapping("/update")
-	public boolean update(){
-		User user = new User();
-		user.setUsername("DADA");
-		user.setUser_hash("fgasdfg-fasd-fads-fasd");
-		return userService.updateByUserHash(user);
-	}
-	
-	@RequestMapping("/save-batch")
-	public boolean saveBatch(){
-		ArrayList<User> users = new ArrayList<User>();
-		User user = new User();
-		user.setUsername("DADA");
-		users.add(user);
-		user = new User();
-		user.setUsername("TADA");
-		users.add(user);
-		return userService.saveBatch(users);
-	}
 }
